@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Page Screenshot — 100% Free &amp; Edit - Screenshot History</title>
+  <link rel="stylesheet" href="history.css">
+</head>
+<body>
+  <div class="history-layout">
+    <!-- Header -->
+    <header class="history-header">
+      <div class="header-brand">
+        <img src="../icons/icon32.png" alt="Logo" class="brand-logo">
+        <div>
+          <h1 class="brand-title">Screenshot History</h1>
+          <p class="brand-sub">All screenshots are stored locally in your browser</p>
+        </div>
+      </div>
+
+      <div class="header-tools">
+        <div class="search-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search captures..." />
+        </div>
+
+        <select id="modeFilter" class="filter-select">
+          <option value="all">All Modes</option>
+          <option value="auto">Full Page (Auto)</option>
+          <option value="manual">Manual Full Page</option>
+          <option value="visible">Visible Area</option>
+          <option value="selected">Selected Area</option>
+        </select>
+
+        <button id="btnClearHistory" class="btn btn-danger">Clear All History</button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="history-main">
+      <div class="stats-bar">
+        <span id="itemCountText" class="stats-text">Showing 0 captures</span>
+      </div>
+
+      <!-- Grid -->
+      <div id="captureGrid" class="capture-grid"></div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="empty-state" style="display: none;">
+        <div class="empty-icon">📷</div>
+        <h2 class="empty-title">No Screenshots Yet</h2>
+        <p class="empty-desc">Capture full pages or visible areas using the Full Page Screenshot — 100% Free &amp; Edit extension.</p>
+      </div>
+    </main>
+
+    <!-- Toast -->
+    <div id="toast" class="toast"></div>
+  </div>
+
+  <script type="module" src="history.js"></script>
+</body>
+</html>

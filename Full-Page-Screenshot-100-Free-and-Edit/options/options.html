@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Page Screenshot — 100% Free &amp; Edit - Options &amp; Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="options-container">
+    <!-- Header -->
+    <header class="options-header">
+      <div class="brand">
+        <img src="../icons/icon32.png" alt="Logo" class="logo">
+        <div>
+          <h1 class="title">Full Page Screenshot — 100% Free &amp; Edit Settings</h1>
+          <p class="subtitle">Customize capture behavior, default formats, and export preferences</p>
+        </div>
+      </div>
+      <button id="btnSaveOptions" class="btn btn-primary">Save Settings</button>
+    </header>
+
+    <div id="toast" class="toast"></div>
+
+    <!-- Main Settings Form -->
+    <main class="settings-grid">
+      <!-- 1. Image Format & Quality -->
+      <section class="settings-card">
+        <h2 class="card-title">Image Export Settings</h2>
+
+        <div class="form-group">
+          <label for="settingFormat">Default Export Format</label>
+          <select id="settingFormat" class="form-select">
+            <option value="png">PNG (Lossless, sharpest detail)</option>
+            <option value="jpeg">JPG / JPEG (Compressed, smaller file size)</option>
+          </select>
+          <p class="form-hint">PNG is recommended for documents and crisp text. JPG reduces file size on very long pages.</p>
+        </div>
+
+        <div id="jpegQualityGroup" class="form-group">
+          <label for="settingQuality">JPG Image Quality</label>
+          <select id="settingQuality" class="form-select">
+            <option value="0.60">Low (60% - Smallest size)</option>
+            <option value="0.80">Medium (80% - Balanced)</option>
+            <option value="0.92" selected>High (92% - Recommended)</option>
+            <option value="1.0">Maximum (100% - Minimal compression)</option>
+          </select>
+        </div>
+
+        <div class="form-group form-check">
+          <input type="checkbox" id="settingMetadataHeader" />
+          <label for="settingMetadataHeader">Include webpage URL & capture timestamp banner on image</label>
+        </div>
+      </section>
+
+      <!-- 2. Capture Engine Tuning -->
+      <section class="settings-card">
+        <h2 class="card-title">Capture Engine Tuning</h2>
+
+        <div class="form-group">
+          <label for="settingScrollDelay">Scroll Settle Delay</label>
+          <select id="settingScrollDelay" class="form-select">
+            <option value="100">100 ms (Fastest, for lightweight pages)</option>
+            <option value="200" selected>200 ms (Recommended default)</option>
+            <option value="350">350 ms (For heavy pages with animations)</option>
+            <option value="500">500 ms (Slowest, for sluggish connections)</option>
+          </select>
+          <p class="form-hint">Wait time after each automated scroll step to allow browser repaints to settle.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="settingLazyWait">Lazy-Loaded Content Settle Wait</label>
+          <select id="settingLazyWait" class="form-select">
+            <option value="150">150 ms (Quick)</option>
+            <option value="300" selected>300 ms (Recommended default)</option>
+            <option value="600">600 ms (High, for heavy lazy-loading pages)</option>
+          </select>
+          <p class="form-hint">Time allowed for deferred off-screen images to trigger and finish downloading.</p>
+        </div>
+      </section>
+
+      <!-- 3. PDF Export Preferences -->
+      <section class="settings-card">
+        <h2 class="card-title">PDF Export Preferences</h2>
+
+        <div class="form-group">
+          <label for="settingPdfPageSize">Default PDF Layout & Page Size</label>
+          <select id="settingPdfPageSize" class="form-select">
+            <option value="continuous">Continuous Single Page (Matching exact page length)</option>
+            <option value="a4" selected>Paginated A4 Pages (Standard document)</option>
+            <option value="letter">Paginated Letter Pages (US Standard)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="settingPdfOrientation">PDF Orientation (When Paginated)</label>
+          <select id="settingPdfOrientation" class="form-select">
+            <option value="portrait" selected>Portrait</option>
+            <option value="landscape">Landscape</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- 4. Keyboard Shortcuts Guide -->
+      <section class="settings-card">
+        <h2 class="card-title">Keyboard Shortcuts</h2>
+        <div class="shortcuts-list">
+          <div class="shortcut-item">
+            <span class="shortcut-name">Auto Full Page Capture</span>
+            <kbd class="shortcut-key">Alt + Shift + F</kbd>
+          </div>
+          <div class="shortcut-item">
+            <span class="shortcut-name">Visible Area Capture</span>
+            <kbd class="shortcut-key">Alt + Shift + V</kbd>
+          </div>
+          <div class="shortcut-item">
+            <span class="shortcut-name">Selected Area Capture</span>
+            <kbd class="shortcut-key">Alt + Shift + S</kbd>
+          </div>
+          <div class="shortcut-item">
+            <span class="shortcut-name">Manual Full Page Capture</span>
+            <kbd class="shortcut-key">Alt + Shift + M</kbd>
+          </div>
+          <div class="shortcut-item">
+            <span class="shortcut-name">Cancel Active Capture</span>
+            <kbd class="shortcut-key">Escape / UI Button</kbd>
+          </div>
+        </div>
+        <p class="form-hint" style="margin-top: 12px;">Default shortcuts can be customized and additional keys assigned at <code>chrome://extensions/shortcuts</code>.</p>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>

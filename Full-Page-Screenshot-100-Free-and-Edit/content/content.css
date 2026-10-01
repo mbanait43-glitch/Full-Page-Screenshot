@@ -1,0 +1,484 @@
+/* content/content.css: Clean, isolated styles for PageSnap Pro overlays and HUDs */
+
+/* 1. Selected Area Capture Overlay */
+#pagesnap-pro-area-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 2147483645 !important;
+  background: rgba(15, 23, 42, 0.45) !important;
+  cursor: crosshair !important;
+  user-select: none !important;
+  pointer-events: auto !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+#pagesnap-pro-selection-box {
+  position: absolute !important;
+  border: 2px dashed #38bdf8 !important;
+  background: rgba(56, 189, 248, 0.12) !important;
+  box-shadow: 0 0 0 99999px rgba(15, 23, 42, 0.45) !important;
+  pointer-events: auto !important;
+  box-sizing: border-box !important;
+  cursor: move !important;
+}
+
+.pagesnap-handle {
+  position: absolute !important;
+  width: 10px !important;
+  height: 10px !important;
+  background: #ffffff !important;
+  border: 2px solid #0284c7 !important;
+  border-radius: 50% !important;
+  box-sizing: border-box !important;
+}
+
+.pagesnap-handle-nw { top: -5px !important; left: -5px !important; cursor: nwse-resize !important; }
+.pagesnap-handle-n  { top: -5px !important; left: 50% !important; transform: translateX(-50%) !important; cursor: ns-resize !important; }
+.pagesnap-handle-ne { top: -5px !important; right: -5px !important; cursor: nesw-resize !important; }
+.pagesnap-handle-e  { top: 50% !important; right: -5px !important; transform: translateY(-50%) !important; cursor: ew-resize !important; }
+.pagesnap-handle-se { bottom: -5px !important; right: -5px !important; cursor: nwse-resize !important; }
+.pagesnap-handle-s  { bottom: -5px !important; left: 50% !important; transform: translateX(-50%) !important; cursor: ns-resize !important; }
+.pagesnap-handle-sw { bottom: -5px !important; left: -5px !important; cursor: nesw-resize !important; }
+.pagesnap-handle-w  { top: 50% !important; left: -5px !important; transform: translateY(-50%) !important; cursor: ew-resize !important; }
+
+#pagesnap-pro-area-toolbar {
+  position: absolute !important;
+  bottom: -48px !important;
+  right: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: #0f172a !important;
+  padding: 6px 12px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3) !important;
+  color: #f8fafc !important;
+  font-size: 13px !important;
+  z-index: 2147483646 !important;
+  white-space: nowrap !important;
+}
+
+.pagesnap-dim-chip {
+  color: #94a3b8 !important;
+  font-size: 11px !important;
+  font-family: monospace !important;
+  margin-right: 4px !important;
+}
+
+.pagesnap-btn {
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 5px 12px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  transition: all 0.15s ease !important;
+}
+
+.pagesnap-btn-primary {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+}
+.pagesnap-btn-primary:hover {
+  background: #0369a1 !important;
+}
+
+.pagesnap-btn-secondary {
+  background: #334155 !important;
+  color: #f1f5f9 !important;
+}
+.pagesnap-btn-secondary:hover {
+  background: #475569 !important;
+}
+
+/* 2. Manual Capture Dock HUD */
+#pagesnap-pro-manual-hud {
+  position: fixed !important;
+  bottom: 28px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 2147483647 !important;
+  background: #0f172a !important;
+  border: 1px solid #334155 !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3) !important;
+  padding: 8px 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  user-select: none !important;
+  animation: pagesnap-slide-up 0.25s ease-out !important;
+}
+
+@keyframes pagesnap-slide-up {
+  from { opacity: 0; transform: translate(-50%, 20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.pagesnap-pulse-dot {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  background: #10b981 !important;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7) !important;
+  animation: pagesnap-pulse 1.8s infinite !important;
+}
+
+@keyframes pagesnap-pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.pagesnap-hud-info {
+  display: flex !important;
+  flex-direction: column !important;
+  line-height: 1.2 !important;
+}
+
+.pagesnap-hud-title {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: #38bdf8 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+}
+
+.pagesnap-hud-counter {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #f8fafc !important;
+}
+
+/* 3. Floating Capture Loader (100% Transparent Upper-Right Lottie Indicator) */
+#pagesnap-floating-loader {
+  position: fixed !important;
+  top: 75px !important;
+  right: 176px !important;
+  width: 56px !important;
+  height: 56px !important;
+  z-index: 2147483647 !important;
+  pointer-events: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: block !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+}
+
+#pagesnap-lottie-box {
+  width: 56px !important;
+  height: 56px !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#pagesnap-floating-loader svg {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  overflow: visible !important;
+}
+
+/* 4. Text Extractor Area Selection Overlay */
+#pagesnap-pro-ocr-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 2147483645 !important;
+  background: rgba(15, 23, 42, 0.45) !important;
+  cursor: crosshair !important;
+  user-select: none !important;
+  pointer-events: auto !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+#pagesnap-pro-ocr-box {
+  position: absolute !important;
+  border: 2px dashed #c084fc !important;
+  background: rgba(168, 85, 247, 0.14) !important;
+  box-shadow: 0 0 0 99999px rgba(15, 23, 42, 0.45) !important;
+  pointer-events: none !important;
+  box-sizing: border-box !important;
+}
+
+.pagesnap-ocr-tip {
+  position: fixed !important;
+  top: 24px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: #0f172a !important;
+  border: 1px solid #334155 !important;
+  color: #f8fafc !important;
+  padding: 8px 16px !important;
+  border-radius: 9999px !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  z-index: 2147483646 !important;
+  pointer-events: none !important;
+}
+
+.pagesnap-ocr-dim {
+  position: absolute !important;
+  bottom: -28px !important;
+  right: 0 !important;
+  background: #0f172a !important;
+  border: 1px solid #334155 !important;
+  color: #c084fc !important;
+  padding: 3px 8px !important;
+  border-radius: 4px !important;
+  font-size: 11px !important;
+  font-family: monospace !important;
+  white-space: nowrap !important;
+}
+
+/* 5. OCR Processing Loading Indicator */
+#pagesnap-pro-ocr-loading {
+  position: fixed !important;
+  bottom: 36px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 2147483647 !important;
+  background: #0f172a !important;
+  border: 1px solid #334155 !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  padding: 10px 22px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  user-select: none !important;
+  animation: pagesnap-slide-up 0.2s ease-out !important;
+}
+
+.pagesnap-ocr-spinner {
+  width: 16px !important;
+  height: 16px !important;
+  border: 2px solid rgba(192, 132, 252, 0.3) !important;
+  border-top-color: #c084fc !important;
+  border-radius: 50% !important;
+  animation: pagesnap-spin 0.75s linear infinite !important;
+}
+
+@keyframes pagesnap-spin {
+  to { transform: rotate(360deg); }
+}
+
+.pagesnap-ocr-loading-text {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #f8fafc !important;
+}
+
+/* 6. Extracted Text Result Modal */
+#pagesnap-pro-ocr-modal-backdrop {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(15, 23, 42, 0.6) !important;
+  backdrop-filter: blur(2px) !important;
+  z-index: 2147483646 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  user-select: none !important;
+}
+
+#pagesnap-pro-ocr-modal {
+  width: 520px !important;
+  max-width: 92vw !important;
+  max-height: 85vh !important;
+  background: #0f172a !important;
+  border: 1px solid #334155 !important;
+  border-radius: 14px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  animation: pagesnap-modal-pop 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+@keyframes pagesnap-modal-pop {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.pagesnap-ocr-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 14px 18px !important;
+  border-bottom: 1px solid #1e293b !important;
+  background: #1e293b !important;
+}
+
+.pagesnap-ocr-title-group {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.pagesnap-ocr-badge {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  background: #a855f7 !important;
+  color: #ffffff !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  letter-spacing: 0.04em !important;
+}
+
+.pagesnap-ocr-title {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #f8fafc !important;
+}
+
+.pagesnap-ocr-close-btn {
+  background: transparent !important;
+  border: none !important;
+  color: #94a3b8 !important;
+  font-size: 16px !important;
+  cursor: pointer !important;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 6px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.15s ease !important;
+}
+.pagesnap-ocr-close-btn:hover {
+  background: #334155 !important;
+  color: #ffffff !important;
+}
+
+.pagesnap-ocr-body {
+  padding: 16px 18px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  user-select: text !important;
+}
+
+.pagesnap-ocr-textarea {
+  width: 100% !important;
+  height: 200px !important;
+  background: #1e293b !important;
+  border: 1px solid #334155 !important;
+  border-radius: 8px !important;
+  padding: 12px !important;
+  color: #f8fafc !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Consolas, monospace !important;
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+  resize: vertical !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+  user-select: text !important;
+}
+.pagesnap-ocr-textarea:focus {
+  border-color: #a855f7 !important;
+}
+
+.pagesnap-ocr-empty-state {
+  padding: 36px 16px !important;
+  text-align: center !important;
+  color: #94a3b8 !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  border: 1px dashed #334155 !important;
+  border-radius: 8px !important;
+  background: rgba(30, 41, 59, 0.4) !important;
+}
+
+.pagesnap-ocr-footer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 12px 18px !important;
+  border-top: 1px solid #1e293b !important;
+  background: #0f172a !important;
+}
+
+.pagesnap-ocr-info {
+  font-size: 11px !important;
+  color: #64748b !important;
+}
+
+.pagesnap-ocr-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.pagesnap-ocr-btn {
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 6px 14px !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: all 0.15s ease !important;
+}
+
+.pagesnap-ocr-btn-sec {
+  background: #1e293b !important;
+  color: #cbd5e1 !important;
+  border: 1px solid #334155 !important;
+}
+.pagesnap-ocr-btn-sec:hover {
+  background: #334155 !important;
+  color: #ffffff !important;
+}
+
+.pagesnap-ocr-btn-primary {
+  background: #a855f7 !important;
+  color: #ffffff !important;
+}
+.pagesnap-ocr-btn-primary:hover {
+  background: #9333ea !important;
+}
+
+.pagesnap-ocr-btn-copied {
+  background: #10b981 !important;
+  color: #ffffff !important;
+}
+

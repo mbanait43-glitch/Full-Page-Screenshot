@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <title>Full Page Screenshot — 100% Free &amp; Edit</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="popup-header">
+      <div class="brand">
+        <img src="../icons/icon32.png" alt="Logo" class="logo-icon">
+        <div class="brand-text">
+          <span class="brand-title">Full Page Screenshot — 100% Free &amp; Edit</span>
+          <span class="brand-subtitle">Smart Full Page Capture</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="historyBtn" class="icon-btn" title="Screenshot History">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </button>
+        <button id="settingsBtn" class="icon-btn" title="Options & Settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Error / Info Toast -->
+    <div id="statusToast" class="status-toast" style="display: none;"></div>
+
+    <!-- Main Capture Modes -->
+    <main class="capture-modes">
+      <!-- Mode 1: Auto Full Page -->
+      <button id="btnAutoFull" class="mode-card primary-mode">
+        <div class="mode-icon-wrapper fullpage-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <polyline points="8 12 12 16 16 12"></polyline>
+            <line x1="12" y1="8" x2="12" y2="16"></line>
+          </svg>
+        </div>
+        <div class="mode-details">
+          <div class="mode-title-row">
+            <span class="mode-name">Full Page (Auto)</span>
+            <span class="mode-shortcut">Alt+Shift+F</span>
+          </div>
+          <p class="mode-desc">Automatically scrolls, eliminates sticky headers, and stitches the entire webpage.</p>
+        </div>
+      </button>
+
+      <!-- Mode 4: Manual Full Page -->
+      <button id="btnManualFull" class="mode-card highlight-mode">
+        <div class="mode-icon-wrapper manual-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a10 10 0 0 0-7.07 17.07l2.12-2.12A7 7 0 1 1 12 19v3a10 10 0 0 0 0-20z"></path>
+            <polyline points="16 12 12 8 8 12"></polyline>
+          </svg>
+        </div>
+        <div class="mode-details">
+          <div class="mode-title-row">
+            <span class="mode-name">Manual Full Page</span>
+            <span class="badge-new">NEW</span>
+          </div>
+          <p class="mode-desc">Scroll at your own speed. Tracks your path and stitches custom page sections.</p>
+        </div>
+      </button>
+
+      <!-- Mode 2: Visible Area -->
+      <button id="btnVisible" class="mode-card">
+        <div class="mode-icon-wrapper visible-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+        </div>
+        <div class="mode-details">
+          <div class="mode-title-row">
+            <span class="mode-name">Visible Area</span>
+            <span class="mode-shortcut">Alt+Shift+V</span>
+          </div>
+          <p class="mode-desc">Instantly captures what is currently visible in your viewport.</p>
+        </div>
+      </button>
+
+      <!-- Mode 3: Selected Area -->
+      <button id="btnSelected" class="mode-card">
+        <div class="mode-icon-wrapper selected-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+            <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+            <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+            <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
+            <rect x="8" y="8" width="8" height="8" rx="1"></rect>
+          </svg>
+        </div>
+        <div class="mode-details">
+          <div class="mode-title-row">
+            <span class="mode-name">Selected Area</span>
+            <span class="mode-shortcut">Alt+Shift+S</span>
+          </div>
+          <p class="mode-desc">Drag and resize an interactive box to capture any custom region.</p>
+        </div>
+      </button>
+
+      <!-- Mode 5: Text Extractor -->
+      <button id="btnTextExtractor" class="mode-card ocr-mode">
+        <div class="mode-icon-wrapper ocr-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+            <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+            <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+            <path d="M7 21H5a2 2 0 0 1-2-2v-2"></path>
+            <line x1="8" y1="9" x2="16" y2="9"></line>
+            <line x1="12" y1="9" x2="12" y2="16"></line>
+            <line x1="10" y1="16" x2="14" y2="16"></line>
+          </svg>
+        </div>
+        <div class="mode-details">
+          <div class="mode-title-row">
+            <span class="mode-name">Text Extractor</span>
+            <span class="badge-ocr">OCR</span>
+          </div>
+          <p class="mode-desc">Select an area and extract text from screenshots, images, or webpages.</p>
+        </div>
+      </button>
+    </main>
+
+    <!-- Footer Settings Strip -->
+    <footer class="popup-footer">
+      <div class="format-toggle">
+        <span class="footer-label">Format:</span>
+        <button id="formatPng" class="format-btn active">PNG</button>
+        <button id="formatJpg" class="format-btn">JPG</button>
+      </div>
+      <div class="footer-meta">
+        <span id="pageDimHint" class="dim-hint">100% Local & Private</span>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

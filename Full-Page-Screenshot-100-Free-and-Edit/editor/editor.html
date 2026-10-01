@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Page Screenshot — 100% Free &amp; Edit - Image Editor</title>
+  <link rel="stylesheet" href="editor.css">
+</head>
+<body>
+  <div class="editor-layout">
+    <!-- Top Toolbar -->
+    <header class="editor-header">
+      <div class="header-left">
+        <a id="backBtn" href="#" class="header-btn" title="Back to Preview">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          Back
+        </a>
+        <span class="editor-title" id="editorTitle">Editing Screenshot</span>
+      </div>
+
+      <!-- Tools Ribbon -->
+      <div class="tools-ribbon">
+        <button id="toolSelect" class="tool-btn active" title="Select / Move Annotations (V)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 3l7 18 3-7 7-3L3 3z"></path>
+          </svg>
+          Select
+        </button>
+
+        <button id="toolCrop" class="tool-btn" title="Crop Image (C)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6.13 1L6 16a2 2 0 0 0 2 2h15"></path>
+            <path d="M1 6.13L16 6a2 2 0 0 1 2 2v15"></path>
+          </svg>
+          Crop
+        </button>
+
+        <div class="tool-divider"></div>
+
+        <button id="toolText" class="tool-btn" title="Text Tool (T)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 7 4 4 20 4 20 7"></polyline>
+            <line x1="9" y1="20" x2="15" y2="20"></line>
+            <line x1="12" y1="4" x2="12" y2="20"></line>
+          </svg>
+          Text
+        </button>
+
+        <button id="toolArrow" class="tool-btn" title="Arrow Tool (A)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="19" x2="19" y2="5"></line>
+            <polyline points="12 5 19 5 19 12"></polyline>
+          </svg>
+          Arrow
+        </button>
+
+        <button id="toolRect" class="tool-btn" title="Rectangle Tool (R)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          </svg>
+          Rectangle
+        </button>
+
+        <button id="toolEllipse" class="tool-btn" title="Circle / Ellipse (O)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+          </svg>
+          Circle
+        </button>
+
+        <button id="toolHighlight" class="tool-btn" title="Highlight Tool (H)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 20h9"></path>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+          </svg>
+          Highlight
+        </button>
+
+        <button id="toolRedact" class="tool-btn" title="Blur / Privacy Redaction (B)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+            <path d="M3 9h18M3 15h18M9 3v18M15 3v18"></path>
+          </svg>
+          Redact / Blur
+        </button>
+
+        <div class="tool-divider"></div>
+
+        <!-- Color & Width options -->
+        <div class="prop-group">
+          <input type="color" id="propColor" class="color-picker" value="#ef4444" title="Annotation Color">
+          <select id="propStrokeWidth" class="prop-select" title="Stroke Thickness">
+            <option value="2">2px</option>
+            <option value="4" selected>4px</option>
+            <option value="8">8px</option>
+            <option value="12">12px</option>
+          </select>
+          <select id="propArrowheadSize" class="prop-select" title="Arrowhead Size" style="display: none;">
+            <option value="auto" selected>Auto Head</option>
+            <option value="14">Small Head</option>
+            <option value="22">Medium Head</option>
+            <option value="32">Large Head</option>
+            <option value="44">X-Large Head</option>
+          </select>
+          <select id="propRedactMode" class="prop-select" title="Redaction Style" style="display: none;">
+            <option value="pixelate" selected>Pixelate Blur</option>
+            <option value="blackout">Solid Blackout</option>
+          </select>
+
+          <!-- Text Properties Group -->
+          <div id="textPropGroup" class="text-prop-group" style="display: none;">
+            <select id="propFontFamily" class="prop-select" title="Font Family">
+              <option value="sans-serif" selected>Sans-serif</option>
+              <option value="Arial, sans-serif">Arial</option>
+              <option value="'Segoe UI', sans-serif">Segoe UI</option>
+              <option value="Georgia, serif">Georgia</option>
+              <option value="'Times New Roman', serif">Times New Roman</option>
+              <option value="'Courier New', monospace">Courier New</option>
+              <option value="Impact, sans-serif">Impact</option>
+            </select>
+            <select id="propFontSize" class="prop-select" title="Font Size">
+              <option value="14">14px</option>
+              <option value="18">18px</option>
+              <option value="24" selected>24px</option>
+              <option value="32">32px</option>
+              <option value="40">40px</option>
+              <option value="48">48px</option>
+              <option value="64">64px</option>
+              <option value="80">80px</option>
+            </select>
+            <button id="propBoldBtn" class="style-toggle-btn active" title="Bold">B</button>
+            <button id="propItalicBtn" class="style-toggle-btn" title="Italic">I</button>
+            <button id="propUnderlineBtn" class="style-toggle-btn" title="Underline">U</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="header-right">
+        <button id="btnUndo" class="header-icon-btn" title="Undo (Ctrl+Z)" disabled>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 7v6h6"></path>
+            <path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"></path>
+          </svg>
+        </button>
+        <button id="btnRedo" class="header-icon-btn" title="Redo (Ctrl+Y)" disabled>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 7v6h-6"></path>
+            <path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3L21 13"></path>
+          </svg>
+        </button>
+        <button id="btnDeleteSelected" class="header-icon-btn" title="Delete Selected Annotation" disabled>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+          </svg>
+        </button>
+
+        <div class="tool-divider"></div>
+
+        <button id="btnSave" class="btn btn-primary" title="Save Changes">Save & Apply</button>
+
+        <div class="dropdown-container">
+          <button id="btnDownloadEdited" class="btn btn-secondary" title="Download Image">Download PNG</button>
+          <button id="btnDownloadDropdown" class="btn btn-secondary btn-dropdown-trigger" title="More formats">▼</button>
+          <div id="downloadMenu" class="dropdown-menu">
+            <button id="menuDownloadPNG" class="menu-item">Download PNG (Lossless)</button>
+            <button id="menuDownloadJPG" class="menu-item">Download JPG (Compressed)</button>
+            <div class="menu-divider"></div>
+            <button id="menuDownloadPDFContinuous" class="menu-item">Export PDF (Single Long Page)</button>
+            <button id="menuDownloadPDFA4" class="menu-item">Export PDF (Paginated A4)</button>
+            <button id="menuDownloadPDFLetter" class="menu-item">Export PDF (Paginated Letter)</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Crop Action Bar (Shown when Crop tool active) -->
+    <div id="cropActionBar" class="crop-bar" style="display: none;">
+      <span class="crop-hint">Drag corners to frame your crop region</span>
+      <span id="cropDimInfo" class="crop-dim">0 × 0 px</span>
+      <div class="crop-btns">
+        <button id="btnApplyCrop" class="btn btn-primary">Apply Crop</button>
+        <button id="btnCancelCrop" class="btn btn-secondary">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Main Workspace -->
+    <main id="editorWorkspace" class="editor-workspace">
+      <div id="canvasContainer" class="canvas-container">
+        <canvas id="baseCanvas"></canvas>
+        <canvas id="annotationCanvas"></canvas>
+        <textarea id="inlineTextEditor" class="inline-text-editor" style="display: none;" spellcheck="false"></textarea>
+        <div id="cropBox" class="editor-crop-box" style="display: none;">
+          <div class="crop-handle crop-handle-nw" data-h="nw"></div>
+          <div class="crop-handle crop-handle-n" data-h="n"></div>
+          <div class="crop-handle crop-handle-ne" data-h="ne"></div>
+          <div class="crop-handle crop-handle-e" data-h="e"></div>
+          <div class="crop-handle crop-handle-se" data-h="se"></div>
+          <div class="crop-handle crop-handle-s" data-h="s"></div>
+          <div class="crop-handle crop-handle-sw" data-h="sw"></div>
+          <div class="crop-handle crop-handle-w" data-h="w"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Floating Zoom Controls Bar -->
+    <div id="editorViewControls" class="view-controls">
+      <button id="editorZoomOutBtn" class="control-btn" title="Zoom Out">-</button>
+      <span id="editorZoomLabel" class="zoom-text">40%</span>
+      <button id="editorZoomInBtn" class="control-btn" title="Zoom In">+</button>
+      <div class="control-divider"></div>
+      <button id="editorZoomFitBtn" class="control-btn" title="Fit to Screen Width">Fit</button>
+      <button id="editorZoomResetBtn" class="control-btn" title="Default 40% View">40%</button>
+      <button id="editorZoom100Btn" class="control-btn" title="100% Actual Size">100%</button>
+    </div>
+
+    <!-- Toast -->
+    <div id="editorToast" class="editor-toast"></div>
+  </div>
+
+  <script type="module" src="editor.js"></script>
+</body>
+</html>

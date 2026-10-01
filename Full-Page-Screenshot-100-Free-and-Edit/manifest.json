@@ -1,0 +1,77 @@
+{
+  "manifest_version": 3,
+  "name": "Full Page Screenshot \u2014 100% Free & Edit",
+  "version": "1.0.0",
+  "description": "Full-page and screen capture with auto-scroll, manual capture, precision stitching, editing, redaction, and PDF export.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "Full Page Screenshot \u2014 100% Free & Edit"
+  },
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "downloads",
+    "contextMenus",
+    "offscreen"
+  ],
+  "optional_host_permissions": [
+    "<all_urls>"
+  ],
+  "optional_permissions": [
+    "tabs"
+  ],
+  "commands": {
+    "capture_full_page": {
+      "suggested_key": {
+        "default": "Alt+Shift+F",
+        "mac": "Alt+Shift+F"
+      },
+      "description": "Auto Full Page Capture"
+    },
+    "capture_visible": {
+      "suggested_key": {
+        "default": "Alt+Shift+V",
+        "mac": "Alt+Shift+V"
+      },
+      "description": "Visible Area Capture"
+    },
+    "capture_selected": {
+      "suggested_key": {
+        "default": "Alt+Shift+S",
+        "mac": "Alt+Shift+S"
+      },
+      "description": "Selected Area Capture"
+    },
+    "capture_manual": {
+      "suggested_key": {
+        "default": "Alt+Shift+M",
+        "mac": "Alt+Shift+M"
+      },
+      "description": "Manual Full Page Capture"
+    },
+    "cancel_capture": {
+      "description": "Cancel active capture"
+    }
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  }
+}
